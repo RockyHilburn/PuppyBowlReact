@@ -1,4 +1,4 @@
-export default function AllPlayers() {
+export default function NavBar() {
     return (
         <>
         
