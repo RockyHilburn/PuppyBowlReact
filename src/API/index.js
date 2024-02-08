@@ -13,3 +13,46 @@ export async function gettingPlayers() {
         console.log(error)
     }
 }
+
+export async function getSinglePlayer(playerId) {
+    try {
+        const resp = await fetch(`${APIURL}/players/${playerId}`)
+        const singlePlayer = await resp.json()
+        return(
+            singlePlayer
+        )
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export async function addNewPlayer(playerObj) {
+    try {
+        const res = await fetch(APIURL + "/players", {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(playerObj),
+                
+        });
+        const updatedPlayers = await res.json();
+        return(
+            updatedPlayers
+            );
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export async function removePlayer(playerId) {
+    try {
+        const respo = await fetch(APIURL + "/players/" + playerId, {
+            method: "DELETE",
+        });
+        const deletePlayers = await respo.json();
+        return(
+            deletePlayers
+            );
+    } catch (error) {
+        console.log(error);
+    }
+};
